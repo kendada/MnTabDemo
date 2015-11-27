@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <cc.mn.tab.MnTabGroupLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/text"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/group_tab_layout"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+        <cc.mn.tab.MnTabLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:tabTitle="微信"
+            app:tabTitleColor="@color/tab_bg_green"
+            app:tabIcon="@mipmap/chats"
+            app:tabIconOver="@mipmap/chats_green"
+            app:tabLablebackground="@color/item_tab_bg"
+            app:tabChecked="true"
+            />
+        <cc.mn.tab.MnTabLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:tabTitle="通讯录"
+            app:tabTitleColor="@color/tab_bg_green"
+            app:tabLableColor="@color/text"
+            app:tabIcon="@mipmap/contacts"
+            app:tabIconOver="@mipmap/contacts_green"
+            />
+        <cc.mn.tab.MnTabLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:tabTitle="发现"
+            app:tabTitleColor="@color/tab_bg_green"
+            app:tabIcon="@mipmap/discover"
+            app:tabIconOver="@mipmap/discover_green"
+            />
+        <cc.mn.tab.MnTabLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:tabTitle="我"
+            app:tabTitleColor="@color/tab_bg_green"
+            app:tabIcon="@mipmap/about_me"
+            app:tabIconOver="@mipmap/about_me_green"
+            />
+    </cc.mn.tab.MnTabGroupLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/group_tab_layout"
+        android:id="@+id/view_pager"
+        />
+
+</RelativeLayout>
