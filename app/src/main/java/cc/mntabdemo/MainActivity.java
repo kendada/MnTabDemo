@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
 
     private ViewPager view_pager;
 
-    private List<WeiXinFragment> list = new ArrayList<>();
+    private List<ContentFragment> list = new ArrayList<>();
 
     private int mPosition = 0;
 
@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
         setContentView(R.layout.activity_main);
 
 
-        list.add(new WeiXinFragment("微信"));
-        list.add(new WeiXinFragment("通讯录"));
-        list.add(new WeiXinFragment("发现"));
-        list.add(new WeiXinFragment("我"));
+        list.add(new ContentFragment("微信"));
+        list.add(new ContentFragment("通讯录"));
+        list.add(new ContentFragment("发现"));
+        list.add(new ContentFragment("我"));
 
         view_pager = (ViewPager)findViewById(R.id.view_pager);
         group_tab_layout = (MnTabGroupLayout)findViewById(R.id.group_tab_layout);

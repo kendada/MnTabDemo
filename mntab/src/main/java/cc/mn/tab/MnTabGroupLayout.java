@@ -30,7 +30,7 @@ public class MnTabGroupLayout extends LinearLayout {
     public MnTabGroupLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         tabLayouts = new ArrayList<>();
-        this.setOrientation(HORIZONTAL);
+        this.setOrientation(HORIZONTAL); //设置默认为水平布局
     }
 
     /**

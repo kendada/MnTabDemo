@@ -61,12 +61,14 @@ public class MnTabLayout extends RelativeLayout{
     public MnTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
+        //获取自定义属性
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.WeiXinTabLayoutStyleable);
+        //是否是选中状态
         isChecked = ta.getBoolean(R.styleable.WeiXinTabLayoutStyleable_tabChecked, false);
-
-        titleColor = ta.getColor(R.styleable.WeiXinTabLayoutStyleable_tabTitleColor, Color.parseColor("#00BCD4"));
+        //标题的颜色，内容
+        titleColor = ta.getColor(R.styleable.WeiXinTabLayoutStyleable_tabTitleColor, Color.GRAY);
         titleText = ta.getString(R.styleable.WeiXinTabLayoutStyleable_tabTitle);
-
+        //图标图片
         tabIcon = ta.getDrawable(R.styleable.WeiXinTabLayoutStyleable_tabIcon);
         tabIconOver = ta.getDrawable(R.styleable.WeiXinTabLayoutStyleable_tabIconOver);
         ta.recycle();
