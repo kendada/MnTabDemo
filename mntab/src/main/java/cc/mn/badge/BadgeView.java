@@ -69,6 +69,11 @@ public class BadgeView extends TextView{
         setBadgeCount(0);
     }
 
+    /**
+     * 设置背景
+     * @param  badgeColor 颜色
+     * @param  dipRadius 圆角半径
+     * */
     public void setBackground(int dipRadius, int badgeColor){
         int radius = dip2Px(dipRadius);
         float[] radiusArray = {radius, radius, radius, radius, radius, radius, radius, radius};
@@ -99,13 +104,19 @@ public class BadgeView extends TextView{
         super.setText(text, type);
     }
 
+    /**
+     * 设置消息数量
+     * */
     public void setBadgeCount(int count){
         setText(String.valueOf(count));
     }
 
+    /**
+     * 获取消息数量
+     * */
     public Integer getBadgeCount(){
         if(TextUtils.isEmpty(getText())){
-            return null;
+            return null; //整形对象，返回null
         }
 
         String text = getText().toString();
@@ -116,6 +127,9 @@ public class BadgeView extends TextView{
         }
     }
 
+    /**
+     * 设置Gravity
+     * */
     public void setBadgeGravity(int gravity){
         FrameLayout.LayoutParams params = (LayoutParams) getLayoutParams();
         params.gravity = gravity;
@@ -127,10 +141,16 @@ public class BadgeView extends TextView{
         return params.gravity;
     }
 
+    /**
+     * 设置外边距
+     * */
     public void setBadgeMargin(int dipMargin){
         setBadgeMargin(dipMargin, dipMargin, dipMargin, dipMargin);
     }
 
+    /**
+     * 设置外边距
+     * */
     public void setBadgeMargin(int leftDipMargin, int topDipMargin, int rightDipMargin, int bottomDipMargin){
         FrameLayout.LayoutParams params = (LayoutParams)getLayoutParams();
         params.leftMargin = dip2Px(leftDipMargin);
@@ -145,6 +165,9 @@ public class BadgeView extends TextView{
         return new int[]{params.leftMargin, params.topMargin, params.rightMargin, params.bottomMargin};
     }
 
+    /**
+     * 累加消息数量
+     * */
     public void incrementBadgeCount(int increment){
         Integer count = getBadgeCount();
         if(count == null){
@@ -154,10 +177,16 @@ public class BadgeView extends TextView{
         }
     }
 
+    /**
+     * 减少消息数量
+     * */
     public void decrementBadgeCount(int decrement){
         incrementBadgeCount(-decrement);
     }
 
+    /**
+     * 设置依靠的View
+     * */
     public void setTargetView(View target){
         if(getParent() != null){
             ((ViewGroup)getParent()).removeView(this);
