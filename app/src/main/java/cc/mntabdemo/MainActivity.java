@@ -22,8 +22,8 @@ import cc.mn.tab.MnTabLayout;
 public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.OnItemClickListener{
 
     private MnTabGroupLayout group_tab_layout;
-    private MnTabLayout tab_main;
-    private BadgeView mBadgeView;
+    private MnTabLayout tab_main, tab_friedns;
+    private BadgeView mBadgeView, badgeView;
 
     private ViewPager view_pager;
 
@@ -45,10 +45,9 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
 
         mBadgeView = new BadgeView(this);
         mBadgeView.setBadgeCount(11);
-        FrameLayout.LayoutParams mBadgeParams = new FrameLayout.LayoutParams(35, 35);
-        mBadgeView.setLayoutParams(mBadgeParams);
         mBadgeView.setBadgeGravity(Gravity.RIGHT);
         mBadgeView.setBackground(10, Color.RED);
+        mBadgeView.setBadgePadding(2, 0, 2, 0);
 
         view_pager = (ViewPager)findViewById(R.id.view_pager);
         group_tab_layout = (MnTabGroupLayout)findViewById(R.id.group_tab_layout);
@@ -56,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
 
         tab_main = (MnTabLayout)findViewById(R.id.tab_main);
         mBadgeView.setTargetView(tab_main.getIconImageView());
+
+        badgeView = new BadgeView(this);
+        badgeView.setBadgeWidthAndHeight(30, 30);
+        badgeView.setBadgeGravity(Gravity.RIGHT);
+        badgeView.setBackground(10, Color.RED);
+
+        tab_friedns = (MnTabLayout)findViewById(R.id.tab_friedns);
+        badgeView.setTargetView(tab_friedns.getIconImageView());
+        badgeView.setMustShow(true); //是不是0或者为空，都必须显示
 
         view_pager.setAdapter(pagerAdapter);
 
@@ -108,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             return true;
         }

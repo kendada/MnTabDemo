@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:id="@+id/tab_friedns"
             app:tabTitle="发现"
             app:tabTitleColor="@color/tab_bg_green"
             app:tabIcon="@mipmap/discover"

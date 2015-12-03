@@ -26,6 +26,8 @@ public class BadgeView extends TextView{
 
     private boolean mHideOnNull = true;
 
+    private boolean mMustShow = false; //为true必须显示
+
     public BadgeView(Context context) {
         this(context, null);
     }
@@ -56,8 +58,6 @@ public class BadgeView extends TextView{
         setTextColor(Color.WHITE);
         setTypeface(Typeface.DEFAULT);
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
-    //    setPadding(dip2Px(1), dip2Px(1), dip2Px(1), dip2Px(1));
-
 
         //设置默认背景
         setBackground(10, Color.parseColor("#e91e63"));
@@ -66,7 +66,6 @@ public class BadgeView extends TextView{
 
         //设置默认数据
         setHideOnNull(true);
-        setBadgeCount(0);
     }
 
     /**
@@ -94,11 +93,22 @@ public class BadgeView extends TextView{
         mHideOnNull = hideOnNull;
     }
 
+    public boolean isMustShow() {
+        return mMustShow;
+    }
+
+    public void setMustShow(boolean mustShow) {
+        mMustShow = mustShow;
+    }
+
     @Override
     public void setText(CharSequence text, BufferType type) {
         if(isHideOnNull() && (text == null || text.toString().equalsIgnoreCase("0"))){
             setVisibility(View.GONE);
         } else {
+            setVisibility(View.VISIBLE);
+        }
+        if(mMustShow){ //必须显示
             setVisibility(View.VISIBLE);
         }
         super.setText(text, type);
@@ -116,7 +126,7 @@ public class BadgeView extends TextView{
      * */
     public Integer getBadgeCount(){
         if(TextUtils.isEmpty(getText())){
-            return null; //整形对象，返回null
+            return null; //整形对象，可以返回null
         }
 
         String text = getText().toString();
@@ -141,6 +151,13 @@ public class BadgeView extends TextView{
         return params.gravity;
     }
 
+    public void setBadgeWidthAndHeight(int width, int height){
+        FrameLayout.LayoutParams params = (LayoutParams)getLayoutParams();
+        params.width = width;
+        params.height = height;
+        setLayoutParams(params);
+    }
+
     /**
      * 设置外边距
      * */
@@ -158,6 +175,20 @@ public class BadgeView extends TextView{
         params.rightMargin = dip2Px(rightDipMargin);
         params.bottomMargin = dip2Px(bottomDipMargin);
         setLayoutParams(params);
+    }
+
+    /**
+     * 设置内边距
+     * */
+    public void setBadgePadding(int dipPading){
+        setBadgeMargin(dipPading, dipPading, dipPading, dipPading);
+    }
+
+    /**
+     * 设置内边距
+     * */
+    public void setBadgePadding(int leftDipPadding, int topDipPadding, int rightDipPadding, int bottomDipPadding){
+        setPadding(dip2Px(leftDipPadding), dip2Px(topDipPadding), dip2Px(rightDipPadding), dip2Px(bottomDipPadding));
     }
 
     public int[] getBadgeMargin(){
