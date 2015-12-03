@@ -101,6 +101,15 @@ public class BadgeView extends TextView{
         mMustShow = mustShow;
     }
 
+    /**
+     * 隐藏
+     * */
+    public void mustHide(){
+        setHideOnNull(false);
+        setMustShow(false);
+        setVisibility(View.GONE);
+    }
+
     @Override
     public void setText(CharSequence text, BufferType type) {
         if(isHideOnNull() && (text == null || text.toString().equalsIgnoreCase("0"))){

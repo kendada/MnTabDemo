@@ -104,6 +104,14 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
     @Override
     public void onClick(int position, MnTabLayout tabLayout) {
         Log.i(tag, "选中的tablayout=" + position);
+        switch (position){
+            case 0:
+                mBadgeView.mustHide();
+                break;
+            case 2:
+                badgeView.mustHide();
+                break;
+        }
         view_pager.setCurrentItem(position, false); //取消动画
     }
 
