@@ -10,19 +10,18 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cc.mn.badge.BadgeView;
-import cc.mn.tab.MnTabGroupLayout;
-import cc.mn.tab.MnTabLayout;
+import cc.mn.tab.TabGroupView;
+import cc.mn.tab.TabView;
 
-public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements TabGroupView.OnItemClickListener{
 
-    private MnTabGroupLayout group_tab_layout;
-    private MnTabLayout tab_main, tab_friedns;
+    private TabGroupView group_tab_layout;
+    private TabView tab_main, tab_friedns;
     private BadgeView mBadgeView, badgeView;
 
     private ViewPager view_pager;
@@ -50,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
         mBadgeView.setBadgePadding(2, 0, 2, 0);
 
         view_pager = (ViewPager)findViewById(R.id.view_pager);
-        group_tab_layout = (MnTabGroupLayout)findViewById(R.id.group_tab_layout);
+        group_tab_layout = (TabGroupView)findViewById(R.id.group_tab_layout);
         group_tab_layout.setOnItemClickListener(this);
 
-        tab_main = (MnTabLayout)findViewById(R.id.tab_main);
+        tab_main = (TabView)findViewById(R.id.tab_main);
         mBadgeView.setTargetView(tab_main.getIconImageView());
 
         badgeView = new BadgeView(this);
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
         badgeView.setBadgeGravity(Gravity.RIGHT);
         badgeView.setBackground(10, Color.RED);
 
-        tab_friedns = (MnTabLayout)findViewById(R.id.tab_friedns);
+        tab_friedns = (TabView)findViewById(R.id.tab_friedns);
         badgeView.setTargetView(tab_friedns.getIconImageView());
         badgeView.setMustShow(true); //是不是0或者为空，都必须显示
 
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
     };
 
     @Override
-    public void onClick(int position, MnTabLayout tabLayout) {
+    public void onClick(int position, TabView tabLayout) {
         Log.i(tag, "选中的tablayout=" + position);
         switch (position){
             case 0:

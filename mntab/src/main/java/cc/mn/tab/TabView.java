@@ -16,7 +16,7 @@ import android.widget.TextView;
  * Version 1.0
  */
 
-public class MnTabLayout extends RelativeLayout{
+public class TabView extends RelativeLayout{
 
     private Context mContext;
 
@@ -48,17 +48,17 @@ public class MnTabLayout extends RelativeLayout{
     //透明度
     private float mAlpha = 1f;
 
-    private String tag = MnTabLayout.class.getSimpleName();
+    private String tag = TabView.class.getSimpleName();
 
-    public MnTabLayout(Context context) {
+    public TabView(Context context) {
         this(context, null);
     }
 
-    public MnTabLayout(Context context, AttributeSet attrs) {
+    public TabView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MnTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TabView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         //获取自定义属性

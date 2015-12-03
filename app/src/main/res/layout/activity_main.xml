@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     >
 
-    <cc.mn.tab.MnTabGroupLayout
+    <cc.mn.tab.TabGroupView
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@color/text"
@@ -14,7 +14,7 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         >
-        <cc.mn.tab.MnTabLayout
+        <cc.mn.tab.TabView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -26,7 +26,7 @@
             app:tabLablebackground="@color/item_tab_bg"
             app:tabChecked="true"
             />
-        <cc.mn.tab.MnTabLayout
+        <cc.mn.tab.TabView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -36,7 +36,7 @@
             app:tabIcon="@mipmap/contacts"
             app:tabIconOver="@mipmap/contacts_green"
             />
-        <cc.mn.tab.MnTabLayout
+        <cc.mn.tab.TabView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -46,7 +46,7 @@
             app:tabIcon="@mipmap/discover"
             app:tabIconOver="@mipmap/discover_green"
             />
-        <cc.mn.tab.MnTabLayout
+        <cc.mn.tab.TabView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -55,7 +55,7 @@
             app:tabIcon="@mipmap/about_me"
             app:tabIconOver="@mipmap/about_me_green"
             />
-    </cc.mn.tab.MnTabGroupLayout>
+    </cc.mn.tab.TabGroupView>
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"

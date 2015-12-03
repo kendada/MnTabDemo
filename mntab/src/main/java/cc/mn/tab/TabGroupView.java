@@ -15,19 +15,19 @@ import java.util.List;
  * Version 1.0
  */
 
-public class MnTabGroupLayout extends LinearLayout {
+public class TabGroupView extends LinearLayout {
 
     private OnItemClickListener onItemClickListener;
 
-    private List<MnTabLayout> tabLayouts;
+    private List<TabView> tabLayouts;
 
-    private String tag = MnTabGroupLayout.class.getSimpleName();
+    private String tag = TabGroupView.class.getSimpleName();
 
-    public MnTabGroupLayout(Context context) {
+    public TabGroupView(Context context) {
         this(context, null);
     }
 
-    public MnTabGroupLayout(Context context, AttributeSet attrs) {
+    public TabGroupView(Context context, AttributeSet attrs) {
         super(context, attrs);
         tabLayouts = new ArrayList<>();
         this.setOrientation(HORIZONTAL); //设置默认为水平布局
@@ -38,7 +38,7 @@ public class MnTabGroupLayout extends LinearLayout {
      * */
     public void setCurrentItem(int item){
         changeItem();
-        MnTabLayout tabLayout = tabLayouts.get(item);
+        TabView tabLayout = tabLayouts.get(item);
         tabLayout.setChecked(true);
     }
 
@@ -48,10 +48,10 @@ public class MnTabGroupLayout extends LinearLayout {
      * */
     public void onPageScrolling(int position, float positionOffset) {
         if(positionOffset>0){
-            MnTabLayout tabLayout = tabLayouts.get(position);
+            TabView tabLayout = tabLayouts.get(position);
             tabLayout.onScrolling(1-positionOffset);
             if(position+1 < tabLayouts.size()){
-                MnTabLayout nextTabLayout = tabLayouts.get(position+1);
+                TabView nextTabLayout = tabLayouts.get(position+1);
                 nextTabLayout.onScrolling(positionOffset);
             }
         }
@@ -63,7 +63,7 @@ public class MnTabGroupLayout extends LinearLayout {
     private void initListener(){
         int count = this.getChildCount();
         for(int i=0; i<count; i++){
-            final MnTabLayout tabLayout = (MnTabLayout)this.getChildAt(i);
+            final TabView tabLayout = (TabView)this.getChildAt(i);
             tabLayouts.add(tabLayout);
             final int finalI = i;
             tabLayout.setOnClickListener(new OnClickListener() {
@@ -83,7 +83,7 @@ public class MnTabGroupLayout extends LinearLayout {
      * 清除选中状态
      * */
     private void changeItem(){
-        for(MnTabLayout tabLayout:tabLayouts){
+        for(TabView tabLayout:tabLayouts){
             tabLayout.setChecked(false);
         }
     }
@@ -100,7 +100,7 @@ public class MnTabGroupLayout extends LinearLayout {
      * 点击事件
      * */
     public interface OnItemClickListener{
-        void onClick(int position, MnTabLayout tabLayout);
+        void onClick(int position, TabView tabLayout);
     }
 
     /**
