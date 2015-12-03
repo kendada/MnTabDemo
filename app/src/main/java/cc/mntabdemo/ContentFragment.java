@@ -62,14 +62,12 @@ public class ContentFragment extends StateFragment {
 
     @Override
     public void onRestoreState(Bundle saveInstanceState) {
-        Log.i(tag, "----恢复状态----");
         edit.setText(saveInstanceState.getString("edit"));
         text.setText(saveInstanceState.getString("text"));
     }
 
     @Override
     public void onSaveState(Bundle outState) {
-        Log.i(tag, "----保存状态----");
         outState.putString("edit", edit.getText().toString());
         outState.putString("text", text.getText().toString());
     }

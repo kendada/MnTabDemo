@@ -1,23 +1,29 @@
 package cc.mntabdemo;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cc.mn.badge.BadgeView;
 import cc.mn.tab.MnTabGroupLayout;
 import cc.mn.tab.MnTabLayout;
 
 public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.OnItemClickListener{
 
     private MnTabGroupLayout group_tab_layout;
+    private MnTabLayout tab_main;
+    private BadgeView mBadgeView;
 
     private ViewPager view_pager;
 
@@ -32,15 +38,24 @@ public class MainActivity extends AppCompatActivity implements MnTabGroupLayout.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         list.add(new ContentFragment("微信"));
         list.add(new ContentFragment("通讯录"));
         list.add(new ContentFragment("发现"));
         list.add(new ContentFragment("我"));
 
+        mBadgeView = new BadgeView(this);
+        mBadgeView.setBadgeCount(11);
+        FrameLayout.LayoutParams mBadgeParams = new FrameLayout.LayoutParams(35, 35);
+        mBadgeView.setLayoutParams(mBadgeParams);
+        mBadgeView.setBadgeGravity(Gravity.RIGHT);
+        mBadgeView.setBackground(10, Color.RED);
+
         view_pager = (ViewPager)findViewById(R.id.view_pager);
         group_tab_layout = (MnTabGroupLayout)findViewById(R.id.group_tab_layout);
         group_tab_layout.setOnItemClickListener(this);
+
+        tab_main = (MnTabLayout)findViewById(R.id.tab_main);
+        mBadgeView.setTargetView(tab_main.getIconImageView());
 
         view_pager.setAdapter(pagerAdapter);
 

@@ -62,6 +62,9 @@ public class StateFragment extends Fragment{
         saveStateToArguments();
     }
 
+    /**
+     * 第一次加载该类
+     * */
     public void onFirstTimeLaunched(){
 
     }

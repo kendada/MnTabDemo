@@ -231,5 +231,9 @@ public class MnTabLayout extends RelativeLayout{
     public boolean isChecked() {
         return isChecked;
     }
+
+    public ImageView getIconImageView() {
+        return iconImageView;
+    }
 }
 
