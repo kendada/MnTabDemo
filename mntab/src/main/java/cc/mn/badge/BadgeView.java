@@ -18,15 +18,17 @@ import android.widget.TextView;
 /**
  * User: 山野书生(1203596603@qq.com)
  * Date: 2015-12-03
- * Time: 14:10
- * Version 1.0
+ * Time: 19:10
+ * Version 1.3
+ * 本控件是在开源控件<a href="https://github.com/stefanjauker/BadgeView"></a>基础上修改完成，感谢！
  */
 
 public class BadgeView extends TextView{
 
     private boolean mHideOnNull = true;
 
-    private boolean mMustShow = false; //为true必须显示
+    //设置为true时，什么情况下都必须显示
+    private boolean mMustShow = false;
 
     public BadgeView(Context context) {
         this(context, null);
@@ -240,7 +242,11 @@ public class BadgeView extends TextView{
             ((FrameLayout)target.getParent()).addView(this);
         } else if(target.getParent() instanceof ViewGroup){
             ViewGroup parentContainer = (ViewGroup)target.getParent();
+
+            //返回目标视图在父视图中的位置
             int groupIndex = parentContainer.indexOfChild(target);
+
+            //先移除视图，下面重新添加到新父视图中
             parentContainer.removeView(target);
 
             FrameLayout badgeContainer = new FrameLayout(getContext());
@@ -251,18 +257,18 @@ public class BadgeView extends TextView{
             target.setLayoutParams(new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
             ));
-
+            //将移除的视图重新添加到新父视图中
             parentContainer.addView(badgeContainer, groupIndex, parentLayoutParams);
             badgeContainer.addView(target);
 
             badgeContainer.addView(this);
         } else if(target.getParent() == null){
-            //Parent View is needed
+            //父控件为空，可以抛出异常
         }
     }
 
     private int dip2Px(float dip){
-        return (int)(dip*getContext().getResources().getDisplayMetrics().density + 05);
+        return (int)(dip*getContext().getResources().getDisplayMetrics().density + 5);
     }
 
 }
